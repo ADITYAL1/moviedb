@@ -1,23 +1,21 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { addSearchMovies } from '../utils/moviesSlice';
-import { useDispatch } from 'react-redux';
+import { DefaultPage, addMovieText, addSearchMovies, addTotalPage } from '../utils/moviesSlice';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 const Header = () => {
   const searchtext=useRef();
 const dispatch=useDispatch();
-  const fetchmovie=async(movie)=>{
-    const data=await fetch('https://api.themoviedb.org/3/search/movie?api_key=c45a857c193f6302f2b5061c3b85e743&language=en-US&query='+movie+'&page=1');
-   const json=await data.json();
-   
-   return json.results;
-  }
+ 
   const handleSearch=async()=>{
     const movie=searchtext.current.value;
-   
-   const tmdbres=await fetchmovie(movie);
+     dispatch(addMovieText(movie));
+     dispatch(DefaultPage());
+    
+      // const tmdbres=await fetchmovie(movie);
  
-    dispatch(addSearchMovies(tmdbres));
+      // dispatch(addSearchMovies(tmdbres));
   }
   return (
     <div className='  w-screen px-4 py-2 bg-gray-900  md:px-8 md:py-4 md:w-full'>

@@ -12,6 +12,9 @@ const moviesSlice=createSlice({
        curPage:1,
        topRatedpage:1,
        upcomingpage:1,
+       searchpage:1,
+       totalsearchpage:1,
+       movietext:null,
      
 },
     reducers:{
@@ -54,10 +57,26 @@ const moviesSlice=createSlice({
      addUpCurPage:(state)=>{
                                 state.upcomingpage=state.upcomingpage+1;
                              },
+    addSePrevPage:(state)=>{
+                              state.searchpage=state.searchpage-1;
+                                },
+       addSeCurPage:(state)=>{
+                                  state.searchpage=state.searchpage+1;
+                               },
+      DefaultPage:(state)=>{
+                                state.searchpage=1;
+                             },
+     addTotalPage:(state,action)=>{
+                                state.totalsearchpage=action.payload;
+                                },
+     addMovieText:(state,action)=>{
+                                  state.movietext=action.payload;
+                                  },
+     
    
      
     }
 
 });
-export const {addPopularMovies,addTopRatedMovies,addUpcomingMovies,addSearchMovies,addcurPage,addPrevPage,addTopCurPage,addTopPrevPage,addUpCurPage,addUpPrevPage,addMovieDetails,addMovieCast} = moviesSlice.actions;
+export const {addPopularMovies,addTopRatedMovies,addUpcomingMovies,addSearchMovies,addcurPage,addPrevPage,addTopCurPage,addTopPrevPage,addUpCurPage,addUpPrevPage,addMovieDetails,addMovieCast,addSeCurPage,addSePrevPage,addTotalPage,addMovieText,DefaultPage} = moviesSlice.actions;
 export default moviesSlice.reducer;

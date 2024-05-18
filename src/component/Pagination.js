@@ -7,7 +7,7 @@ const Pagination = ({currentPage,totalPages,nextDispatch,prevDispatch}) => {
 
    const handleNext=()=>{
     
-   if(currentPage<100){
+   if(currentPage<totalPages){
       nextDispatch();
    }
    }
