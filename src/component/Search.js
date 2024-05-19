@@ -1,3 +1,4 @@
+
 import React from 'react'
 import MovieCard from './MovieCard'
 import { useDispatch, useSelector } from 'react-redux';
@@ -25,8 +26,9 @@ const Search = () => {
           <MovieCard key={movie.id}  id={movie.id} posterPath={movie.poster_path} title={movie.title} rating={movie.vote_average}/>))}
          </div>
          <Pagination currentPage={page} totalPages={totalpages} nextDispatch={onnextpage} prevDispatch={onprevpage}/>
-    </div>
-  )
-}
 
-export default Search
+    </div>
+  );
+};
+
+export default Search;
